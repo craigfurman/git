@@ -1030,8 +1030,7 @@ int transport_push(struct transport *transport,
 							  &ref->new_oid);
 
 			if (!push_unpushed_submodules(&commits,
-						      transport->remote,
-						      refspec, refspec_nr,
+						      transport->remote->name,
 						      transport->push_options,
 						      pretend)) {
 				oid_array_clear(&commits);
