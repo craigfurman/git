@@ -1454,6 +1454,20 @@ extern int parse_oid_hex(const char *hex, struct object_id *oid, const char **en
 #define INTERPRET_BRANCH_HEAD (1<<2)
 extern int interpret_branch_name(const char *str, int len, struct strbuf *,
 				 unsigned allowed);
+
+/*
+ * NEEDSWORK: declare strbuf_branchname() and strbuf_check_branch_ref()
+ * here, not in strbuf.h
+ */
+
+/*
+ * Check if a 'name' is suitable to be used as a branch name; this can
+ * be and is stricter than what check_refname_format() returns for a
+ * string that is a concatenation of "name" after "refs/heads/"; a
+ * name that begins with "-" is not allowed, for example.
+ */
+extern int check_branch_ref_format(const char *name);
+
 extern int get_oid_mb(const char *str, struct object_id *oid);
 
 extern int validate_headref(const char *ref);
